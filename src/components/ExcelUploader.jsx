@@ -1,3 +1,4 @@
+import CSS from './excel-view.css';
 import React, { useState, useEffect } from 'react';
 
 const ExcelDataDisplay = () => {
@@ -26,36 +27,38 @@ const ExcelDataDisplay = () => {
     }, []);
 
     return (
-        <div>
-            <h1>Data from Excel API</h1>
-            {loading ? (
-                <p>Loading data...</p>
-            ) : (
-                <table border="1" cellPadding="10" cellSpacing="0">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Links</th>
-                            <th>Category</th>
-                            <th>Options</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {data.map((item, index) => (
-                            <tr key={index}>
-                                <td>{item.Name}</td>
-                                <td>
-                                    <a href={`http://${item.Links}`} target="_blank" rel="noopener noreferrer">
-                                        {item.Links}
-                                    </a>
-                                </td>
-                                <td>{item.Catagory}</td>
-                                <td>{item.Options}</td>
+        <div className='justify-content-center align-items-center vh-100 text-dark main-div'>
+            <div className='container'>
+                <h1 className='text-center mb-4'>Data from Excel API</h1>
+                {loading ? (
+                    <p>Loading data...</p>
+                ) : (
+                    <table cellPadding="20" cellSpacing="10" className='container justify-content-center align-items-center text-align-center borderr'>
+                        <thead className='text-center'>
+                            <tr>
+                                <th>Name</th>
+                                <th>Links</th>
+                                <th>Category</th>
+                                <th>Options</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
-            )}
+                        </thead>
+                        <tbody className='text-center'>
+                            {data.map((item, index) => (
+                                <tr key={index}>
+                                    <td>{item.Name}</td>
+                                    <td>
+                                        <a href={`http://${item.Links}`} target="_blank" rel="noopener noreferrer">
+                                            {item.Links}
+                                        </a>
+                                    </td>
+                                    <td>{item.Catagory}</td>
+                                    <td>{item.Options}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                )}
+            </div>
         </div>
     );
 };
