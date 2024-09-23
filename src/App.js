@@ -5,7 +5,7 @@ import ExcelUploader from './components/ExcelUploader';
 function App() {
   return (
     <div className="App app-view">
-      <h1>Upload Excel file form google drive </h1>
+      {/* <h1>Upload Excel file form google drive </h1> */}
       <ExcelUploader />
     </div>
   );

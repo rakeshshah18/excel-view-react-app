@@ -27,8 +27,9 @@ const ExcelDataDisplay = () => {
     }, []);
 
     return (
-        <div className='justify-content-center align-items-center vh-100 text-dark main-div'>
+        <div className='justify-content-center align-items-center text-dark main-div'>
             <div className='container'>
+                <h1 className='text-center'>Upload Excel file form google drive </h1>
                 <h1 className='text-center mb-4'>Data from Excel API</h1>
                 {loading ? (
                     <p>Loading data...</p>
