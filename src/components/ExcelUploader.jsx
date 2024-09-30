@@ -40,7 +40,6 @@ const ExcelDataDisplay = () => {
                                 <th>Name</th>
                                 <th>Links</th>
                                 <th>Category</th>
-                                <th>Options</th>
                             </tr>
                         </thead>
                         <tbody className='text-center'>
@@ -53,7 +52,6 @@ const ExcelDataDisplay = () => {
                                         </a>
                                     </td>
                                     <td>{item.Catagory}</td>
-                                    <td>{item.Options}</td>
                                 </tr>
                             ))}
                         </tbody>
