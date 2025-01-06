@@ -10,14 +10,14 @@ const ExcelDataDisplay = () => {
     useEffect(() => {
         // to fetch data from the API
         const fetchDataFromAPI = async () => {
-            const apiURL = 'https://script.google.com/macros/s/AKfycbxUVuAQHncuJNGJVFj3UwzmaTOmryr4Aj6Qxv_UPXLHvptMpKKU5nHR2nSA3R8ON34g/exec'; 
+            const apiURL = 'https://script.google.com/macros/s/AKfycbzFCdLqnRGd_k9A0x9zRsNOLjoz86EbL6k3imQDX5AB-M_76fq41PUjGbg0p4u2CWjd/exec';
             try {
                 const response = await fetch(apiURL);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
                 const result = await response.json();
-                setData(result.data);  // Set full dataset
+                setData(result.dataata);  // Set full dataset
                 setFilteredData(result.data);  // Initially, show all data
             } catch (error) {
                 console.error('Error fetching data from API:', error);
@@ -35,9 +35,9 @@ const ExcelDataDisplay = () => {
         setFilterValue(value);
 
         // Filter the data based on the Name or Category only
-        const filtered = data.filter((item) => 
-            item.Name.toLowerCase().includes(value.toLowerCase()) ||
-            item.Catagory.toLowerCase().includes(value.toLowerCase())
+        const filtered = data.filter((item) =>
+            item.Date.toLowerCase().includes(value.toLowerCase()) ||
+            item.In_Out.toLowerCase().includes(value.toLowerCase())
         );
         setFilteredData(filtered);
     };
@@ -47,12 +47,12 @@ const ExcelDataDisplay = () => {
             <div className='container'>
                 <h1 className='text-center'>Upload Excel file from Google Drive</h1>
                 <h1 className='text-center mb-4'>Data from Excel API</h1>
-                
+
                 {/* Filter input */}
                 <div className="text-center mb-4">
-                    <input 
-                        type="text" 
-                        placeholder="Filter by Name or Category" 
+                    <input
+                        type="text"
+                        placeholder="Filter by Date or Name --"
                         value={filterValue}
                         onChange={handleFilterChange}
                         className="form-control"
@@ -65,21 +65,19 @@ const ExcelDataDisplay = () => {
                     <table cellPadding="20" cellSpacing="10" className='container justify-content-center align-items-center text-align-center borderr'>
                         <thead className='text-center'>
                             <tr>
+                                <th>Date</th>
                                 <th>Name</th>
-                                <th>Links</th>
-                                <th>Category</th>
+                                <th>In_Out</th>
                             </tr>
                         </thead>
                         <tbody className='text-center'>
                             {filteredData.map((item, index) => (
                                 <tr key={index}>
-                                    <td>{item.Name}</td>
+                                    <td>{item.Date}</td>
                                     <td>
-                                        <a href={`http://${item.Links}`} target="_blank" rel="noopener noreferrer">
-                                            {item.Links}
-                                        </a>
+                                        {item.Name}
                                     </td>
-                                    <td>{item.Catagory}</td>
+                                    <td>{item.In_Out}</td>
                                 </tr>
                             ))}
                         </tbody>
